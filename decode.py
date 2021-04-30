@@ -60,7 +60,7 @@ def decode(code: str):
     if type == "j":
         address = instruction[6:]
         print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
-        "\nADR:", address, "( With Shift ", int("0b"+address, 2) << 2, ")", "\n")
+        "\nADR:", address, "( With Shift", int("0b"+address, 2) << 2, ")", "\n")
     
     return
 
