@@ -16,11 +16,6 @@ cd into the folder and run with python or simply open `decode.py` to run the scr
 SYNTAX: Instruction must be a 32-bit string followed by type "r", "i", or "j"
 Type 'exit' to close
 
-Enter MIPS instruction followed by the instruction type: 00001000110100010000000000100110 j
-00001000110100010000000000100110 j
-SYNTAX: Instruction must be a 32-bit string followed by type "r", "i", or "j"
-Type 'exit' to close
-
 Enter MIPS instruction followed by the instruction type: 00001000 11010001 00000000 00100110 j    
 
 J-TYPE
@@ -46,5 +41,8 @@ SHAMT: 00000 ( 0 bits )
 FUNCT: 000010 ( srl )
 
 Enter MIPS instruction followed by the instruction type: exit
+
+Closing Script
+
 PS C:\Users\Anthony Tedja\Documents\mips>
 ```

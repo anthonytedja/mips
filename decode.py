@@ -18,6 +18,7 @@ register = {0: "$zero", 1: "$at", 2: "$v0", 3: "$v1", 4: "$a0", 5: "$a1", 6: "$a
 
 def decode(code: str):
     if code == "exit":
+        print("\nClosing Script\n")
         sys.exit()
         
     type = code[len(code) - 1]
