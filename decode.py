@@ -1,3 +1,5 @@
+import os, sys
+
 function = {"100000r": "add", "100001r": "addu", "001000i": "addi", "001001i": "addiu",
     "011010r": "div", "011011r": "divu", "011000r": "mult", "011001r": "multu",
     "100010r": "sub", "100011r": "subu", "100100r": "and", "001100i": "andi", "100111r": "nor",
@@ -14,7 +16,12 @@ register = {0: "$zero", 1: "$at", 2: "$v0", 3: "$v1", 4: "$a0", 5: "$a1", 6: "$a
 16: "$s0", 17: "$s1", 18: "$s2", 19: "$s3", 20: "$s4", 21: "$s5", 22: "$s6", 23: "$s7",
 24: "$t8", 25: "$t9", 26: "$k0", 27: "$k1", 28: "$gp", 29: "$sp", 30: "$fp", 31: "$ra"}
 
-def instruction(instruction: str, type: str):
+def decode(code: str):
+    if code == "exit":
+        sys.exit()
+        
+    type = code[len(code) - 1]
+    instruction = code[:len(code)-1]
     instruction = instruction.replace(" ", "")
     opcode = instruction[:6]
 
@@ -53,11 +60,12 @@ def instruction(instruction: str, type: str):
         address = instruction[6:]
         print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
         "\nADR:", address, "( With Shift ", int("0b"+address, 2) << 2, ")", "\n")
+    
+    return
 
-
-if __name__ == "__main__":
-    # INSTRUCTION MUST BE 32-BIT STRING with type "r", "i", or "j"
-
-    instruction("0000 0000 1011 0001 0001 0000 0000 0010", "r")
-    # instruction("00010101 00100111 11111111 11001101", "i")
-    # instruction("00001000 11010001 00000000 00100110", "j")
+os.system('cls' if os.name=='nt' else 'clear')
+print("SYNTAX: Instruction must be a 32-bit string followed by type \"r\", \"i\", or \"j\"")
+print("Type 'exit' to close\n")
+while True:
+    code = input("Enter MIPS instruction followed by the instruction type: ")
+    decode(code)
