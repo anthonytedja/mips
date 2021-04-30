@@ -1,10 +1,10 @@
 # mips
 
-mips is a python-based script that decodes MIPS instructions
+mips is a python-based script that decodes MIPS instructions.
 
 ## Usage
 
-cd into the folder and run with python or simply open decode.py to run the script
+cd into the folder and run with python or simply open `decode.py` to run the script
 
 ```cpp
 & C:/Python39/python.exe "c:/Users/Anthony Tedja/Documents/mips/decode.py"
