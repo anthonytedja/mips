@@ -20,7 +20,7 @@ Enter MIPS instruction followed by the instruction type: 00001000 11010001 00000
 
 J-TYPE
 OPCODE: 000010 ( j )
-ADR: 00110100010000000000100110 ( With Shift 54788248 )
+ADR: 00110100010000000000100110 ( 13697062 ) ( With Shift 54788248 )
 
 Enter MIPS instruction followed by the instruction type: 00010101001001111111111111001101 i
 

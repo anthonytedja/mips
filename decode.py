@@ -39,7 +39,7 @@ def decode(code: str):
         "\nDEST:", destination, "( register", int("0b"+destination, 2),
         register.get(int("0b"+destination, 2), "ERROR"),")",
         "\nSHAMT:", shamt, "(", int("0b"+shamt, 2), "bits )",
-        "\nFUNCT:", funct, "(", function.get(funct + "r", "ERROR"), ")", "\n")
+        "\nFUNCT:", funct, "(", function.get(funct + "r", "ERROR"), ")\n")
 
     if type == "i":
         rs1 = instruction[6:11]
@@ -54,13 +54,13 @@ def decode(code: str):
         "\nRS:", rs1, "( register", int("0b"+rs1, 2), register.get(int("0b"+rs1, 2), "ERROR"), ")",
         "\nRT:", rt2, "( register", int("0b"+rt2, 2), register.get(int("0b"+rt2, 2), "ERROR"), ")",
         "\nIMMED:", immediate, "(", int("0b"+immediate, 2), ")",
-        "( With Shift", shift, ")"
-        "\n")
+        "( With Shift", shift, ")\n")
 
     if type == "j":
         address = instruction[6:]
         print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
-        "\nADR:", address, "( With Shift", int("0b"+address, 2) << 2, ")", "\n")
+        "\nADR:", address, "(", int("0b"+address, 2), ")",
+        "( With Shift", int("0b"+address, 2) << 2, ")\n")
     
     return
 
