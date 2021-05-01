@@ -72,7 +72,9 @@ def decode(instruction: str):
 
 os.system('cls' if os.name=='nt' else 'clear')
 print("SYNTAX: Instruction must be a 32-bit binary string")
-print("Type 'exit' to close\n")
+print("Type 'exit' to close")
+print("\n--------------------------------------------------\n")
 while True:
     instruction = input("ENTER MIPS INSTRUCTION: ")
     decode(instruction)
+    print("--------------------------------------------------\n")
