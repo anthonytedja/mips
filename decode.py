@@ -16,17 +16,20 @@ register = {0: "$zero", 1: "$at", 2: "$v0", 3: "$v1", 4: "$a0", 5: "$a1", 6: "$a
 16: "$s0", 17: "$s1", 18: "$s2", 19: "$s3", 20: "$s4", 21: "$s5", 22: "$s6", 23: "$s7",
 24: "$t8", 25: "$t9", 26: "$k0", 27: "$k1", 28: "$gp", 29: "$sp", 30: "$fp", 31: "$ra"}
 
-def decode(code: str):
-    if code == "exit":
+def decode(instruction: str):
+    instruction = instruction.replace(" ", "")
+
+    if instruction == "exit":
         print("\nClosing Script\n")
         sys.exit()
-        
-    type = code[len(code) - 1]
-    instruction = code[:len(code)-1]
-    instruction = instruction.replace(" ", "")
+
+    if len(instruction) != 32 or set(instruction) != {'0', '1'}:
+        print("\nInvalid instruction: must enter 32-bit binary string\n")
+        return
+    
     opcode = instruction[:6]
 
-    if type == "r":
+    if opcode == "000000" and function.get(instruction[26:] + 'r', None):
         rs1 = instruction[6:11]
         rt2 = instruction[11:16]
         destination = instruction[16:21]
@@ -41,7 +44,7 @@ def decode(code: str):
         "\nSHAMT:", shamt, "(", int("0b"+shamt, 2), "bits )",
         "\nFUNCT:", funct, "(", function.get(funct + "r", "ERROR"), ")\n")
 
-    if type == "i":
+    elif function.get(opcode + 'i', None):
         rs1 = instruction[6:11]
         rt2 = instruction[11:16]
         immediate = instruction[16:]
@@ -56,17 +59,20 @@ def decode(code: str):
         "\nIMMED:", immediate, "(", int("0b"+immediate, 2), ")",
         "( With Shift", shift, ")\n")
 
-    if type == "j":
+    elif function.get(opcode + 'j', None):
         address = instruction[6:]
         print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
         "\nADR:", address, "(", int("0b"+address, 2), ")",
         "( With Shift", int("0b"+address, 2) << 2, ")\n")
+
+    else:
+        print("\nMIPS instruction not found\n")
     
     return
 
 os.system('cls' if os.name=='nt' else 'clear')
-print("SYNTAX: Instruction must be a 32-bit string followed by type \"r\", \"i\", or \"j\"")
+print("SYNTAX: Instruction must be a 32-bit binary string")
 print("Type 'exit' to close\n")
 while True:
-    code = input("Enter MIPS instruction followed by the instruction type: ")
-    decode(code)
+    instruction = input("ENTER MIPS INSTRUCTION: ")
+    decode(instruction)
