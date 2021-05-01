@@ -23,7 +23,7 @@ def decode(instruction: str):
         print("\nClosing Script\n")
         sys.exit()
 
-    if len(instruction) != 32 or set(instruction) != {'0', '1'}:
+    if len(instruction) != 32 or not set(instruction).issubset({'0', '1'}):
         print("\nInvalid instruction: must enter 32-bit binary string\n")
         return
     
