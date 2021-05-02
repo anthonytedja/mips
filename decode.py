@@ -1,3 +1,8 @@
+"""
+All of the files in this directory and all subdirectories are:
+Copyright (c) 2021 Anthony Tedja
+"""
+
 import os, sys
 
 function = {"100000r": "add", "100001r": "addu", "001000i": "addi", "001001i": "addiu",
@@ -11,12 +16,14 @@ function = {"100000r": "add", "100001r": "addu", "001000i": "addi", "001001i": "
     "101011i": "sw", "010000r": "mfhi", "010010r": "mflo", "101010r": "slt", "101001r": "sltu",
     "001010i": "slti", "001001i": "sltiu"}
 
-register = {0: "$zero", 1: "$at", 2: "$v0", 3: "$v1", 4: "$a0", 5: "$a1", 6: "$a2", 7: "$a3",
-8: "$t0", 9: "$t1", 10: "$t2", 11: "$t3", 12: "$t4", 13: "$t5", 14: "$t6", 15: "$t7",
-16: "$s0", 17: "$s1", 18: "$s2", 19: "$s3", 20: "$s4", 21: "$s5", 22: "$s6", 23: "$s7",
-24: "$t8", 25: "$t9", 26: "$k0", 27: "$k1", 28: "$gp", 29: "$sp", 30: "$fp", 31: "$ra"}
+register = ["$zero", "$at", "$v0", "$v1", "$a0", "$a1", "$a2", "$a3", "$t0", "$t1",  "$t2", 
+"$t3", "$t4", "$t5", "$t6", "$t7", "$s0", "$s1", "$s2", "$s3", "$s4", "$s5", "$s6", 
+"$s7", "$t8", "$t9", "$k0", "$k1", "$gp", "$sp", "$fp", "$ra"]
+
 
 def decode(instruction: str):
+    """ Decode MIPS instruction and print in shell.
+    """
     instruction = instruction.replace(" ", "")
 
     if instruction == "exit":
@@ -37,10 +44,10 @@ def decode(instruction: str):
         funct = instruction[26:]
 
         print("\nR-TYPE", "\nOPCODE:", opcode,
-        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register.get(int("0b"+rs1, 2), "ERROR"), ")",
-        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register.get(int("0b"+rt2, 2), "ERROR"), ")",
+        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register[int("0b"+rs1, 2)], ")",
+        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register[int("0b"+rt2, 2)], ")",
         "\nDEST:", destination, "( register", int("0b"+destination, 2),
-        register.get(int("0b"+destination, 2), "ERROR"),")",
+        register[int("0b"+destination, 2)], ")",
         "\nSHAMT:", shamt, "(", int("0b"+shamt, 2), "bits )",
         "\nFUNCT:", funct, "(", function.get(funct + "r", "ERROR"), ")\n")
 
@@ -54,13 +61,14 @@ def decode(instruction: str):
             shift = shift - (1 << 16)
 
         print("\nI-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "i", "ERROR"), ")",
-        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register.get(int("0b"+rs1, 2), "ERROR"), ")",
-        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register.get(int("0b"+rt2, 2), "ERROR"), ")",
+        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register[int("0b"+rs1, 2)], ")",
+        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register[int("0b"+rt2, 2)], ")",
         "\nIMMED:", immediate, "(", int("0b"+immediate, 2), ")",
         "( With Shift", shift, ")\n")
 
     elif function.get(opcode + 'j', None):
         address = instruction[6:]
+        
         print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
         "\nADR:", address, "(", int("0b"+address, 2), ")",
         "( With Shift", int("0b"+address, 2) << 2, ")\n")
