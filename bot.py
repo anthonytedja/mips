@@ -1,3 +1,8 @@
+"""
+All of the files in this directory and all subdirectories are:
+Copyright (c) 2021 Anthony Tedja
+"""
+
 import os
 
 from discord.ext import commands
