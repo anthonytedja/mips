@@ -34,44 +34,36 @@ def decode(instruction: str):
         print("\nInvalid instruction: must enter 32-bit binary string\n")
         return
     
-    opcode = instruction[:6]
+    rsn, rtn = int("0b"+(rs := instruction[6:11]), 2), int("0b"+(rt := instruction[11:16]), 2)
 
-    if opcode == "000000" and function.get(instruction[26:] + 'r', None):
-        rs1 = instruction[6:11]
-        rt2 = instruction[11:16]
-        destination = instruction[16:21]
-        shamt = instruction[21:26]
-        funct = instruction[26:]
+    if not "1" in (opcode := instruction[:6]) and function.get((funct := instruction[26:]) + 'r', 0):
+        destn, shamt = int("0b"+(destination := instruction[16:21]), 2), instruction[21:26]
 
         print("\nR-TYPE", "\nOPCODE:", opcode,
-        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register[int("0b"+rs1, 2)], ")",
-        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register[int("0b"+rt2, 2)], ")",
-        "\nDEST:", destination, "( register", int("0b"+destination, 2),
-        register[int("0b"+destination, 2)], ")",
+        "\nRS:", rs, "( register", rsn, register[rsn], ")",
+        "\nRT:", rt, "( register", rtn, register[rtn], ")",
+        "\nDEST:", destination, "( register", destn, register[destn], ")",
         "\nSHAMT:", shamt, "(", int("0b"+shamt, 2), "bits )",
-        "\nFUNCT:", funct, "(", function.get(funct + "r", "ERROR"), ")\n")
+        "\nFUNCT:", funct, "(", function.get(funct + "r"), ")\n")
 
-    elif function.get(opcode + 'i', None):
-        rs1 = instruction[6:11]
-        rt2 = instruction[11:16]
+    elif function.get(opcode + 'i', 0):
         immediate = instruction[16:]
 
-        shift = int("0b" + immediate[2:] + "00", 2)
-        if (shift & (1 << (16 - 1))) != 0:  # GET 2S COMPLEMENT
+        if ((shift := int("0b" + immediate[2:] + "00", 2)) & (1 << (16 - 1))) != 0:  # GET 2S
             shift = shift - (1 << 16)
 
-        print("\nI-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "i", "ERROR"), ")",
-        "\nRS:", rs1, "( register", int("0b"+rs1, 2), register[int("0b"+rs1, 2)], ")",
-        "\nRT:", rt2, "( register", int("0b"+rt2, 2), register[int("0b"+rt2, 2)], ")",
+        print("\nI-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "i"), ")",
+        "\nRS:", rs, "( register", rsn, register[rsn], ")",
+        "\nRT:", rt, "( register", rtn, register[rtn], ")",
         "\nIMMED:", immediate, "(", int("0b"+immediate, 2), ")",
         "( With Shift", shift, ")\n")
 
-    elif function.get(opcode + 'j', None):
-        address = instruction[6:]
+    elif function.get(opcode + 'j', 0):
+        adrn = int("0b" + (address := instruction[6:]), 2)
         
-        print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j", "ERROR"), ")",
-        "\nADR:", address, "(", int("0b"+address, 2), ")",
-        "( With Shift", int("0b"+address, 2) << 2, ")\n")
+        print("\nJ-TYPE", "\nOPCODE:", opcode, "(", function.get(opcode + "j"), ")",
+        "\nADR:", address, "(", adrn, ")",
+        "( With Shift", adrn << 2, ")\n")
 
     else:
         print("\nMIPS instruction not found\n")
