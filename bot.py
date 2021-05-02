@@ -28,15 +28,14 @@ async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
 @bot.command(name='decode', help='Decode 32-bit binary MIPS instruction')
-async def decode(ctx, instruction):
+async def decode(ctx, instruction=""):
     instruction = instruction.replace(" ", "")
 
     if len(instruction) != 32 or not set(instruction).issubset({'0', '1'}):
         await ctx.send("\nInvalid instruction: must enter 32-bit binary string\n")
-    
-    rsn, rtn = int("0b"+(rs := instruction[6:11]), 2), int("0b"+(rt := instruction[11:16]), 2)
 
-    if not "1" in (opcode := instruction[:6]) and function.get((funct := instruction[26:]) + 'r', 0):
+    elif not "1" in (opcode := instruction[:6]) and function.get((funct := instruction[26:]) + 'r', 0):
+        rsn, rtn = int("0b"+(rs := instruction[6:11]), 2), int("0b"+(rt := instruction[11:16]), 2)
         destn, shamt = int("0b"+(destination := instruction[16:21]), 2), instruction[21:26]
 
         val = f"\nR-TYPE\nOPCODE: {opcode}"
@@ -47,6 +46,7 @@ async def decode(ctx, instruction):
         await ctx.send(val)
 
     elif function.get(opcode + 'i', 0):
+        rsn, rtn = int("0b"+(rs := instruction[6:11]), 2), int("0b"+(rt := instruction[11:16]), 2)
         immediate = instruction[16:]
 
         if ((shift := int("0b" + immediate[2:] + "00", 2)) & (1 << (16 - 1))) != 0:  # GET 2S
