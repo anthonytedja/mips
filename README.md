@@ -1,6 +1,6 @@
 # mips
 
-mips is a python-based script that decodes MIPS instructions.
+mips is a python-based script that decodes [`MIPS instructions.`](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
 
 ## Usage
 
