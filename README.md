@@ -4,7 +4,7 @@ mips is a python-based script that decodes [`MIPS instructions.`](https://en.wik
 
 ## Usage
 
-cd into `/mips` and run command or simply open [`decode.py`](https://github.com/anthonytedja/mips/blob/main/decode.py) to run the script. Requires `python 3.8+`
+cd into `/mips` and run command or simply open [`decode.py`](https://github.com/anthonytedja/mips/blob/main/decode.py) to run the script. Requires [`python 3.8+`](https://docs.python.org/3/whatsnew/3.8.html)
 
 ```cpp
 python decode.py
