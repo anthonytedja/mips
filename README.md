@@ -1,5 +1,11 @@
 # mips
 
+[![Preview](assets/img/mips.jpg)](https://github.com/anthonytedja/mips)
+
+> mips is a script that decompiles binary instructions into [`MIPS Assembly.`](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
+
+## Script Usage
+
 ```cpp
 SYNTAX: Instruction must be a 32-bit binary string
 Type 'exit' to close
@@ -41,14 +47,11 @@ ENTER MIPS INSTRUCTION: exit
 Closing Script
 ```
 
-> mips is a python-based script that decompiles binary instructions into [`MIPS Assembly.`](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
-
-## Usage
-
 cd into `mips` and run `python decode.py` command or open [`decode.py`](https://github.com/anthonytedja/mips/blob/main/decode.py) to run the script. Requires [`python 3.8+`](https://docs.python.org/3/whatsnew/3.8.html)
 
 - For the discord bot functionality, add the discord token in the `.env` file
 
 ## Built With
 
+- Bootstrap Studio
 - Visual Studio Code
