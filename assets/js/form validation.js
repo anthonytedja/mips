@@ -1,4 +1,10 @@
-// From Bootstrap Template
+window.onload = function() {  
+    let instruction = localStorage.getItem('mips-instruction');
+    if (instruction) {
+        $('#instruction').val(instruction);
+        decode(instruction.replace(/\s/g, ''));
+}
+};  
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
@@ -111,9 +117,8 @@ const register = [
 ];
 
 function decode(instruction) {
+    localStorage.setItem('mips-instruction', $('#instruction').val());
 	var output = $('#output');
-
-	//rsn, rtn = int("0b"+(rs := instruction[6:11]), 2), int("0b"+(rt := instruction[11:16]), 2)
 
 	let rs = instruction.slice(6, 11);
 	let rt = instruction.slice(11, 16);
