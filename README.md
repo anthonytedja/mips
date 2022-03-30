@@ -1,8 +1,8 @@
 # mips
 
-[![Preview](assets/img/mips.jpg)](https://github.com/anthonytedja/mips)
+[![Preview](assets/img/mips.jpg)](https://anthonytedja.github.io/mips)
 
-> mips is a script that decompiles binary instructions into [`MIPS Assembly.`](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
+> mips is a webpage, script, and discord bot that decompiles binary instructions into [`MIPS Assembly.`](https://en.wikibooks.org/wiki/MIPS_Assembly/Instruction_Formats)
 
 ## Script Usage
 
