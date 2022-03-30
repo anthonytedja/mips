@@ -131,7 +131,7 @@ function decode(instruction) {
 		let destn = parseInt(destination, 2);
 		let shamt = instruction.slice(21, 26);
 
-		let text = '\nR-TYPE \nOPCODE: ' + opcode;
+		let text = 'R-TYPE \nOPCODE: ' + opcode;
 		text += '\nRS: ' + rs + ' ( register ' + rsn + ' ' + register[rsn] + ' )';
 		text += '\nRT: ' + rt + ' ( register ' + rtn + ' ' + register[rtn] + ' )';
 		text += '\nDEST: ' + destination + ' ( register ' + destn + ' ' + register[destn] + ' )';
@@ -147,7 +147,7 @@ function decode(instruction) {
 			shift = shift - (1 << 16);
 		}
 
-		let text = '\nI-TYPE \nOPCODE: ' + opcode + ' ( ' + dic[ikey] + ' )';
+		let text = 'I-TYPE \nOPCODE: ' + opcode + ' ( ' + dic[ikey] + ' )';
 		text += '\nRS: ' + rs + ' ( register ' + rsn + ' ' + register[rsn] + ' )';
 		text += '\nRT: ' + rt + ' ( register ' + rtn + ' ' + register[rtn] + ' )';
 		text += '\nIMMED: ' + immediate + ' ( ' + parseInt(immediate, 2) + ' ) ';
@@ -159,13 +159,13 @@ function decode(instruction) {
 		let adrn = parseInt(address, 2);
 		let shift = adrn << 2;
 
-		let text = '\nJ-TYPE \nOPCODE: ' + opcode + ' ( ' + dic[jkey] + ' )';
+		let text = 'J-TYPE \nOPCODE: ' + opcode + ' ( ' + dic[jkey] + ' )';
 		text += '\nADR: ' + address + ' ( ' + adrn + ' )';
 		text += '( With Shift ' + shift.toString() + ' )';
 
 		output.text(text);
 	} else {
-		let text = '\nMIPS instruction not found\n';
+		let text = 'MIPS instruction not found';
 		output.text(text);
 	}
 
