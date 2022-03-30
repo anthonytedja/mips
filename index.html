@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Mips</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Animated-Type-Heading.css">
+    <link rel="stylesheet" href="assets/css/registration-form.css">
+</head>
+
+<body>
+    <main class="page lanidng-page" style="/*background: var(--bs-light);*/min-height: 100%;">
+        <section>
+            <div class="mx-auto header-content">				<div class="caption v-middle text-center" style="margin: 50px;">
+					<h1 class="cd-headline clip">
+			            <span class="blc"></span>
+			            <span class="cd-words-wrapper">
+			              <b class="is-visible">MIPS.</b>
+			            </span>
+	          		</h1>
+				</div>
+                <section class="form-section" style="padding: 20px 0px;">
+                    <div class="form-container">
+                        <form class="needs-validation" style="border-radius: 10px;" onsubmit="return false" novalidate="">
+                            <div class="mb-3"><input class="form-control" type="text" id="instruction" placeholder="Enter a 32-bit binary instruction" required="" pattern="^(\s*[01]){32}$"><div class="invalid-feedback">Please provide a 32-bit binary string.</div></div>
+                            <div class="mb-3"><button class="btn btn-primary d-block w-100" id="decompile" type="submit" style="background: lightblue;">Decompile</button></div><code id="output"></code>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Animated-Type-Heading.js"></script>
+    <script src="assets/js/form%20validation.js"></script>
+</body>
+
+</html>
