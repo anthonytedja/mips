@@ -26,9 +26,9 @@
                 <section class="form-section" style="padding: 20px 0px;">
                     <div class="form-container">
                         <form class="needs-validation" style="border-radius: 10px;" onsubmit="return false" novalidate="">
-                            <div class="mb-3"><input class="form-control" type="text" id="instruction" placeholder="Enter a 32-bit binary instruction" required="" pattern="^(\s*[01]){32}$"><div class="invalid-feedback">Please provide a 32-bit binary string.</div></div>
+                            <div class="mb-3"><input class="form-control" type="text" id="instruction" placeholder="Enter a 32-bit binary instruction" required="" pattern="^(\s*[01]\s*){32}$"><div class="invalid-feedback">Please provide a 32-bit binary string.</div></div>
                             <div class="mb-3"><button class="btn btn-primary d-block w-100" id="decompile" type="submit" style="background: lightblue;">Decompile</button></div>
-                            <div id="outputarea" class="mb-3"><code id="output"></code></div>
+                            <div id="outputarea" class="mb-3"><code id="output">Example:&nbsp;0000 0000 1011 0001 0001 0000 0000 0010</code></div>
                         </form>
                     </div>
                 </section>
