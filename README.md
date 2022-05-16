@@ -49,7 +49,11 @@ Closing Script
 
 cd into `mips` and run `python decode.py` command or open [`decode.py`](https://github.com/anthonytedja/mips/blob/main/decode.py) to run the script. Requires [`python 3.8+`](https://docs.python.org/3/whatsnew/3.8.html)
 
-- For the discord bot functionality, add the discord token in the `.env` file
+- For the discord bot functionality, add the discord token in the `.env` file and use the bot.py file
+
+## Features
+
+- Local Storage saves last instruction
 
 ## Built With
 

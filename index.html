@@ -7,38 +7,36 @@
 <meta name="image" property="og:image" content="assets/img/mips.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Mips</title>
+    <meta name="description" content="mips is a webpage, script, and discord bot that decompiles binary instructions into MIPS Assembly.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/Animated-Type-Heading.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/registration-form.css">
 </head>
 
 <body>
-    <main class="page lanidng-page" style="/*background: var(--bs-light);*/min-height: 100%;">
-        <section>
-            <div class="mx-auto">				<div class="caption v-middle text-center" style="margin: 50px;">
-					<h1 class="cd-headline clip">
-			            <span class="blc"></span>
-			            <span class="cd-words-wrapper">
-			              <b class="is-visible">MIPS.</b>
-			            </span>
-	          		</h1>
-				</div>
-                <section class="form-section" style="padding: 20px 0px;">
-                    <div class="form-container">
-                        <form class="needs-validation" style="border-radius: 10px;" onsubmit="return false" novalidate="">
-                            <div class="mb-3"><input class="form-control" type="text" id="instruction" placeholder="Enter a 32-bit binary instruction" required="" pattern="^(\s*[01]\s*){32}$"><div class="invalid-feedback">Please provide a 32-bit binary string.</div></div>
-                            <div class="mb-3"><button class="btn btn-primary d-block w-100" id="decompile" type="submit" style="background: lightblue;">Decompile</button></div>
-                            <div id="outputarea" class="mb-3"><code id="output">Example:&nbsp;0000 0000 1011 0001 0001 0000 0000 0010</code></div>
-                        </form>
-                    </div>
-                </section>
+    <section style="min-height: 100vh;align-items: center;justify-content: center;display: flex;">
+        <div class="mx-auto">
+            <div class="caption v-middle text-center" style="margin: 50px;">
+                <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200" data-aos-once="true" class="cd-headline clip" style="font-weight: 600;"><span class="cd-words-wrapper"><strong class="is-visible">MIPS.</strong></span></h1>
             </div>
-            <div class="mx-auto text-center" style="padding: 30px;"><a href="https://github.com/anthonytedja"><i class="fa fa-github icons" style="font-size: 40px; color: lightblue; transition: transform 0.5s; padding: 0px 10px 0px;"></i></a></div>
-        </section>
-    </main>
+            <section data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-once="true" class="form-section" style="padding: 20px 0px;">
+                <div class="form-container">
+                    <form class="needs-validation" style="border-radius: 10px;" onsubmit="return false" novalidate="">
+                        <div class="mb-3"><input class="form-control" type="text" id="instruction" placeholder="Enter a 32-bit binary instruction" required="" pattern="^(\s*[01]\s*){32}$"><div class="invalid-feedback">Please provide a 32-bit binary string.</div></div>
+                        <div class="mb-3"><button class="btn btn-primary d-block w-100" id="decompile" type="submit" style="background: lightblue;">Decompile</button></div>
+                        <div id="outputarea" class="mb-3"><code id="output">Example:&nbsp;0000 0000 1011 0001 0001 0000 0000 0010</code></div>
+                    </form>
+                </div>
+            </section>
+            <div class="mx-auto text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" style="padding: 30px;"><a href="https://github.com/anthonytedja"><i class="fa fa-github icons" style="font-size: 40px; color: lightblue; transition: transform 0.5s; padding: 0px 10px 0px;"></i></a></div>
+        </div>
+    </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/Animated-Type-Heading.js"></script>
     <script src="assets/js/form%20validation.js"></script>
 </body>
